@@ -135,12 +135,12 @@
 */
 #define COM_CTRL        0               // [-] Commutation Control Type
 #define SIN_CTRL        1               // [-] Sinusoidal Control Type
-#define FOC_CTRL        2               // [-] Field Oriented Control (FOC) Type
+//#define FOC_CTRL        2               // [-] Field Oriented Control (FOC) Type
 
 #define OPEN_MODE       0               // [-] OPEN mode
 #define VLT_MODE        1               // [-] VOLTAGE mode
 #define SPD_MODE        2               // [-] SPEED mode
-#define TRQ_MODE        3               // [-] TORQUE mode
+//#define TRQ_MODE        3               // [-] TORQUE mode
 
 // Enable/Disable Motor
 #define MOTOR_LEFT_ENA                  // [-] Enable LEFT motor.  Comment-out if this motor is not needed to be operational
@@ -174,8 +174,8 @@
 
 // ############################## DEFAULT SETTINGS ############################
 // Default settings will be applied at the end of this config file if not set before
-#define INACTIVITY_TIMEOUT        8       // Minutes of not driving until poweroff. it is not very precise.
-#define BEEPS_BACKWARD            1       // 0 or 1
+#define INACTIVITY_TIMEOUT        800       // Minutes of not driving until poweroff. it is not very precise.
+#define BEEPS_BACKWARD            0       // 0 or 1
 #define ADC_MARGIN                100     // ADC input margin applied on the raw ADC min and max to make sure the MIN and MAX values are reached even in the presence of noise
 #define ADC_PROTECT_TIMEOUT       100     // ADC Protection: number of wrong / missing input commands before safety state is taken
 #define ADC_PROTECT_THRESH        200     // ADC Protection threshold below/above the MIN/MAX ADC values
@@ -429,7 +429,7 @@
     #define AUX_INPUT1            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define AUX_INPUT2            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #else
-    //#define FLASH_WRITE_KEY       0x1005  // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
+    //#define FLASH_WRITE_KEY       0x1006  // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
     #define CONTROL_PWM_LEFT      0       // use RC PWM as input on the LEFT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART2!
     #define CONTROL_PWM_RIGHT     0       // use RC PWM as input on the RIGHT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART3!
     #define PRI_INPUT1            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
@@ -446,9 +446,9 @@
   // #define SUPPORT_BUTTONS_RIGHT           // use right sensor board cable for button inputs. Disable DEBUG_SERIAL_USART3!
 
   #if defined(CONTROL_PWM_RIGHT) && !defined(DUAL_INPUTS)
-    #define DEBUG_SERIAL_USART2           // left sensor cable debug
+    //#define DEBUG_SERIAL_USART2           // left sensor cable debug
   #elif defined(CONTROL_PWM_LEFT) && !defined(DUAL_INPUTS)
-   // #define DEBUG_SERIAL_USART3           // right sensor cable debug
+    #define DEBUG_SERIAL_USART3           // right sensor cable debug
   #endif
 #endif
 // ############################# END OF VARIANT_PWM SETTINGS ############################
