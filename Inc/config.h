@@ -296,7 +296,7 @@
     #define AUX_INPUT1          3, -1000, 0, 1000, 0  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define AUX_INPUT2          3, -1000, 0, 1000, 0  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #else
-    #define FLASH_WRITE_KEY     0x1002    // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
+    //#define FLASH_WRITE_KEY     0x1002    // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
     #define DEBUG_SERIAL_USART3           // right sensor board cable, disable if I2C (nunchuk or lcd) is used!
   #endif
 
@@ -429,8 +429,8 @@
     #define AUX_INPUT1            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define AUX_INPUT2            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
   #else
-    #define FLASH_WRITE_KEY       0x1006  // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
-    //#define CONTROL_PWM_LEFT      0       // use RC PWM as input on the LEFT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART2!
+    //#define FLASH_WRITE_KEY       0x1006  // Flash memory writing key. Change this key to ignore the input calibrations from the flash memory and use the ones in config.h
+    #define CONTROL_PWM_LEFT      3       // use RC PWM as input on the LEFT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART2!
     #define CONTROL_PWM_RIGHT     0       // use RC PWM as input on the RIGHT cable. Number indicates priority for dual-input. Disable DEBUG_SERIAL_USART3!
     #define PRI_INPUT1            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
     #define PRI_INPUT2            3, -1000, 0, 1000, 100  // TYPE, MIN, MID, MAX, DEADBAND. See INPUT FORMAT section
@@ -446,7 +446,7 @@
   // #define SUPPORT_BUTTONS_RIGHT           // use right sensor board cable for button inputs. Disable DEBUG_SERIAL_USART3!
 
   #if defined(CONTROL_PWM_RIGHT) && !defined(DUAL_INPUTS)
-    //#define DEBUG_SERIAL_USART2           // left sensor cable debug
+    #define DEBUG_SERIAL_USART2           // left sensor cable debug
   #elif defined(CONTROL_PWM_LEFT) && !defined(DUAL_INPUTS)
     #define DEBUG_SERIAL_USART3           // right sensor cable debug
   #endif
@@ -703,7 +703,7 @@
   #error DEBUG_SERIAL_USART3 and FEEDBACK_SERIAL_USART3 not allowed, choose one.
 #endif
 
-#if defined(DEBUG_SERIAL_USART2) && //defined(DEBUG_SERIAL_USART3)
+#if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3)
   #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
 #endif
 
@@ -721,7 +721,7 @@
 
 
 // LEFT cable checks
-#if defined(CONTROL_ADC) && (defined(CONTROL_SERIAL_USART2) || defined(SIDEBOARD_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART2) || //defined(DEBUG_SERIAL_USART2))
+#if defined(CONTROL_ADC) && (defined(CONTROL_SERIAL_USART2) || //defined(SIDEBOARD_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART2) || //defined(DEBUG_SERIAL_USART2))
   #error //CONTROL_ADC and SERIAL_USART2 not allowed. It is on the same cable.
 #endif
 
