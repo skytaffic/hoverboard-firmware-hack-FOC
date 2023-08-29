@@ -704,7 +704,7 @@
 #endif
 
 #if defined(DEBUG_SERIAL_USART2) && defined(DEBUG_SERIAL_USART3)
-  #error DEBUG_SERIAL_USART2 and DEBUG_SERIAL_USART3 not allowed, choose one.
+  #error DEBUG_SERIAL_USART2 and //DEBUG_SERIAL_USART3 not allowed, choose one.
 #endif
 
 #if defined(CONTROL_PPM_LEFT) && defined(CONTROL_PPM_RIGHT)
@@ -722,7 +722,7 @@
 
 // LEFT cable checks
 #if defined(CONTROL_ADC) && (defined(CONTROL_SERIAL_USART2) || defined(SIDEBOARD_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART2) || defined(DEBUG_SERIAL_USART2))
-  #error CONTROL_ADC and SERIAL_USART2 not allowed. It is on the same cable.
+  #error //CONTROL_ADC and SERIAL_USART2 not allowed. It is on the same cable.
 #endif
 
 #if defined(CONTROL_PPM_LEFT) && (defined(CONTROL_SERIAL_USART2) || defined(SIDEBOARD_SERIAL_USART2) || defined(FEEDBACK_SERIAL_USART2) || defined(DEBUG_SERIAL_USART2))
@@ -760,7 +760,7 @@
 #endif
 
 #if defined(CONTROL_PWM_RIGHT) && (defined(CONTROL_SERIAL_USART3) || defined(SIDEBOARD_SERIAL_USART3) || defined(FEEDBACK_SERIAL_USART3) || defined(DEBUG_SERIAL_USART3))
-  #error CONTROL_PWM_RIGHT and SERIAL_USART3 not allowed. It is on the same cable.
+  #error //CONTROL_PWM_RIGHT and SERIAL_USART3 not allowed. It is on the same cable.
 #endif
 
 #if defined(DEBUG_I2C_LCD) && (defined(CONTROL_SERIAL_USART3) || defined(SIDEBOARD_SERIAL_USART3) || defined(FEEDBACK_SERIAL_USART3) || defined(DEBUG_SERIAL_USART3))
